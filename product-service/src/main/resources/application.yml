@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: product-service
+---
+
+spring:
+  profiles: productService1
+server:
+  port: 8080
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8881/eureka/,http://localhost:8882/eureka/
+  server:
+    enable-self-preservation: false #关闭自我保护
+    eviction-interval-timer-in-ms: 3000 #剔除服务间隔，单位毫秒
+---
+
+spring:
+  profiles: productService2
+server:
+  port: 8081
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8881/eureka/,http://localhost:8882/eureka/
+  server:
+    enable-self-preservation: false #关闭自我保护
+    eviction-interval-timer-in-ms: 3000 #剔除服务间隔，单位毫秒

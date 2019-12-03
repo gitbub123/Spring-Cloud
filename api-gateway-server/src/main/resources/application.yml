@@ -1,0 +1,15 @@
+server:
+  port: 10000
+spring:
+  application:
+    name: api-gateway-server
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true #开启根据服务器名称自动转发
+          lower-case-service-id: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8881/eureka/,http://localhost:8882/eureka/

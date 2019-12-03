@@ -1,0 +1,22 @@
+server:
+  port: 10086
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8881/eureka/,http://localhost:8882/eureka/
+spring:
+  application:
+    name: api-zuul-server
+zuul:
+  routes:
+    api-index:
+      path: /index/**
+      serviceId: index-service
+    api-product:
+      path: /product/**
+      serviceId: product-service
+  #统一入口为上面的配置，其他入口忽略
+  ignored-patterns: /*service/**
+  #默认zuul会屏蔽cookie，cookie不会传到下游服务，这里设置为空则取 消默认的黑名单，表
+  #示会传递到下游服务，比如product-service
+  sensitive-headers:

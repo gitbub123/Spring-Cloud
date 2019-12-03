@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: eureka-service
+---
+
+spring:
+  profiles: eurekaService1
+server:
+  port: 8881
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8882/eureka/
+---
+spring:
+  profiles: eurekaService2
+server:
+  port: 8882
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8881/eureka/
